@@ -1,0 +1,111 @@
+---
+const navItem = [
+  {
+    id: "00",
+    title: "HOME",
+    label: "home",
+    url: "/#home",
+  },
+  {
+    id: "01",
+    title: "DESTINATION",
+    label: "home",
+    url: "/#home",
+  },
+  {
+    id: "02",
+    title: "CREW",
+    label: "home",
+    url: "/#home",
+  },
+  {
+    id: "03",
+    title: "TECHNOLOGY",
+    label: "home",
+    url: "/#home",
+  },
+];
+
+
+---
+<header class="relative z-10 py-6  top-0 left-0 right-0 flex justify-between items-center px-2 md:pb-14 md:w-full xl:w-11/12 md:px-8 pc:w-[1400px] pc:mx-auto pc:px-2 ">
+  <img src="shared/logo.svg" alt="Logo">
+  
+  <nav id="navMovil" class="w-0 bg-[#0b0d17]/20 backdrop-blur-[80px] min-h-screen fixed top-0 right-0 text-white transition-all duration-700 ease-in-out md:flex md:flex-row md:bg-[#0b0d17]  md:w-[80%] md:min-h-0   gap-8  md:ml-6   ">
+    <div class="flex">
+      <button class="m-3 ml-auto md:hidden" id="btnClose">
+        <img src="shared/icon-close.svg" class="w-4" alt="Cerrar menú">
+      </button>
+    </div>
+      <div class="flex pt-3 flex-col items-start ml-6 mt-12 md:flex-row md:m-6">
+    {
+      navItem.map((link) => (
+        <a href={link.url} class="text-left text-lg cursor-pointer mb-6 relative group w-full md:w-30 md:flex md:px-4 md:gap-2 md:text-sm font-[bellefair] font-thin">
+          <strong>{link.id} </strong>{link.title}
+          <span class="absolute top-1/2 left-[90%] rotate-90 opacity-0 transition-opacity ease-in duration-800 h-[5px] w-6 bg-indigo-600 group-hover:opacity-100"></span>
+        </a>
+      ))
+    }
+    </div>
+  </nav>
+  <button id="btnOpen" class="md:hidden">
+    <img class="w-6" src="shared/icon-hamburger.svg" alt="Abrir Menú">
+  </button>
+
+
+<!-- <nav id="navMovil" class="w-0 bg-[#0b0d17]/20 backdrop-blur-[80px] min-h-screen fixed top-0 right-0 text-white transition-all duration-700 ease-in-out">
+  <div class="flex pt-3 flex-col gap-20">
+    <button class="m-3 ml-auto" id="btnClose">
+      <img src="shared/icon-close.svg" class="w-7" alt="Cerrar menú">
+    </button>
+    <div class="flex pt-3 flex-col items-start ml-6">
+      {
+        navItem.map((link) => (
+          <a href={link.url} class="text-left text-xl hover:text-orange-400 cursor-pointer mb-4 relative group w-full">
+            <strong>{link.id} </strong>{link.title}
+            <span class="absolute top-1/2 left-[90%] rotate-90 opacity-0 transition-opacity ease-in duration-800 h-[5px] w-6 bg-indigo-600 group-hover:opacity-100"></span>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</nav> -->
+</header>
+<!-- Coloca el script al final del documento -->
+<script is:inline>
+ 
+    const btnOpen = document.querySelector('#btnOpen');
+    const btnClose = document.querySelector('#btnClose');
+    const nav = document.querySelector('#navMovil');
+
+    btnOpen?.addEventListener('click', () => {
+      nav?.classList.remove('w-0');
+      nav?.classList.add('w-3/4');
+      console.log("Menú abierto");
+    });
+
+    btnClose?.addEventListener('click', () => {
+
+      nav?.classList.remove('w-3/4');
+      nav?.classList.add('w-0');
+      console.log("Menú cerrado");
+    });
+ 
+</script>
+
+
+<!-- 
+  nav.style.width = '75%';
+        nav.style.width = '0';
+
+-->
+
+
+<style>
+
+  /* body{
+    font-family: 'Barlow Condensed', sans-serif;
+
+  } */
+
+</style>

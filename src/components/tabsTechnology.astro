@@ -1,0 +1,125 @@
+---
+import { getCollection } from "astro:content";
+
+const technologys = await getCollection("technology");
+---
+
+<section class="tab-content">
+
+  {
+    technologys.map((technology) => {
+      const {slug, body, data} = technology
+      const {title, img, name} = data;
+
+
+      return (
+      <article id={title}
+              data-tab-content
+              class=" active">
+
+     
+      <h4
+  
+  class="text-center text-base font-normal tracking-wider font-[bellefair] text-white"
+>
+  <span class="opacity-20 mx-2">03</span>SPACE LAUNCH 101
+</h4 >
+
+<img class="w-[373px] h-[200px] mix-blend-screen my-4"  src={`/public/technology/${img}`}>
+
+<nav
+class="text-sm flex gap-4 list-none justify-center text-BLUE-300 font-[Barlow-Condensed] font-normal tracking-widest my-10 tabs"
+>
+<li  class="w-10 h-10 bg-white rounded-[999px] flex-col justify-center items-center gap-2 inline-flex tab active" data-tab-target="#LAUNCH" >
+ <span class="text-center text-[#0b0d17] text-lg font-normal font-['Bellefair'] uppercase">1</span>
+</li>
+<li  class="w-10 h-10 bg-white rounded-[999px] flex-col justify-center items-center gap-2 inline-flex tab" data-tab-target="#SPACE" >
+  <span class="text-center text-[#0b0d17] text-lg font-normal font-['Bellefair'] uppercase">2</span>
+ </li>
+ <li  class="w-10 h-10 bg-white rounded-[999px] flex-col justify-center items-center gap-2 inline-flex tab" data-tab-target="#SPACEPORT" >
+  <span class="text-center text-[#0b0d17] text-lg font-normal font-['Bellefair'] uppercase">3</span>
+ </li>
+</nav>
+ <h4
+ class="text-BLUE-300 mt-6  opacity-50 text-center  text-lg font-normal font-['Bellefair'] uppercase"
+>
+THE TERMINOLOGY…
+</h4>
+<p
+ class="text-center text-xl text-white text-[28px] font-normal font-['Bellefair'] uppercase mb-4"
+>
+  {name}
+</p>
+
+<p
+class="text-center text-[#d0d6f9] text-[17px] font-thin font-['bellefair'] leading-[20px] px-10 mb-4"
+>
+{body}
+</p>
+
+</nav>
+</article>
+      );
+    })
+  }
+ 
+</section>
+
+<style>
+  [data-tab-content] {
+    display: none;
+  }
+
+  .active[data-tab-content] {
+    display: block;
+  }
+
+  body {
+    padding: 0;
+    margin: 0;
+  }
+
+  .tabs {
+   
+ 
+  }
+
+  .tab {
+    cursor: pointer;
+    padding: 10px;
+  }
+
+  .tab.active {
+    background-color: white;
+  }
+
+  .tab:hover {
+    background-color: #aaa;
+  }
+
+  .tab-content {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+</style>
+
+<script>
+ const tabs = document.querySelectorAll('[data-tab-target]')
+const tabContents = document.querySelectorAll('[data-tab-content]')
+
+tabs.forEach(tab => {
+tab.addEventListener('click', () => {
+  console.log("se")
+  const target = document.querySelector(tab.dataset.tabTarget)
+  tabContents.forEach(tabContent => {
+    tabContent.classList.remove('active')
+  })
+  tabs.forEach(tab => {
+    tab.classList.remove('active')
+  })
+
+  tab.classList.add('active')
+  target.classList.add('active')
+})
+})
+</script>

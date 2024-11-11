@@ -1,0 +1,47 @@
+---
+
+
+
+
+
+import Menu from "../components/Menu.astro";
+import Layout from "../layouts/Layout.astro";
+import Background from "../components/background.astro";
+
+import '@fontsource/bellefair';
+import '@fontsource/barlow-condensed/100.css';
+import '@fontsource/barlow-condensed/400.css';
+// import TabsEarthCopy from "../components/tabsEarth copy.astro";
+ import TabsEarth from "../components/tabsEarth.astro";
+---
+
+
+<Layout title="destination">
+    <Menu/>
+    <Background src="destination/background-destination-mobile.jpg"/>
+<main class="relative" >
+    <TabsEarth/>
+    <!-- <section class="text-white ">
+        <h4 class="text-center text-base font-normal tracking-wider font-[barlow-condensed]"><span class="opacity-20 mx-2">01</span>PICK YOUR DESTINATION</h4>
+        <img class="w-36 mx-auto my-4 mb-8" src="public/destination/image-moon.png"/>
+        <nav class="text-sm flex gap-4 list-none justify-center text-BLUE-300 font-[Barlow-Condensed]  font-normal  tracking-widest">
+            <li class="group relative w-max ">MOON
+                <span class="absolute -bottom-3 left-0 w-0 transition-all h-1 bg-gray-700 group-hover:w-full duration-[10ms]"></span>
+            </li>
+            <li class="">MARS</li>
+            <li>EUROPA</li>
+            <li>TITAN</li>
+        </nav>
+        <article class="text-center mt-8">
+            <h2 class="text-center text-white text-[56px] font-normal font-['Bellefair']">MOON</h2>
+            <p class="text-center text-[#d0d6f9] text-[15px] font-normal font-['Barlow'] leading-[27px]">See our planet as you’ve never seen it before. A perfect relaxing trip away to help regain perspective and come back refreshed. While you’re there, take in some history by visiting the Luna 2 and Apollo 11 landing sites.</p>
+            <div class="w-[90%] h-px opacity-25 bg-white mx-auto my-5"></div>
+            <h4 class=" text-BLUE-300 my-2 text-center  text-xs font-normal font-['Barlow Condensed'] uppercase tracking-widest">AVG. DISTANCE</h4>
+  <p class="text-center text-2xl  text-white text-[28px] font-normal font-['Bellefair'] uppercase">384,400 KM</p>
+  
+  <h4 class="text-BLUE-300 mt-6 mb-2 text-center  text-xs font-normal font-['Barlow Condensed'] uppercase tracking-widest">EST. TRAVEL TIME</h4>
+  <p class="text-center text-2xl  text-white text-[28px] font-normal font-['Bellefair'] uppercase ">3 DAYS</p>
+        </article>
+    </section> -->
+</main>
+</Layout>

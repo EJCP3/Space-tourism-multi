@@ -1,0 +1,160 @@
+---
+import { getCollection, render } from "astro:content";
+
+import Menu from "../components/Menu.astro";
+import Layout from "../layouts/Layout.astro";
+import Background from "../components/background.astro";
+
+const earths = await getCollection("earth");
+
+import "@fontsource/bellefair";
+import "@fontsource/barlow-condensed/100.css";
+import "@fontsource/barlow-condensed/400.css";
+---
+
+///Importa solo el contenido y deja el menu aparte
+
+<Layout title="destination">
+  <Menu />
+  <Background src="destination/background-destination-mobile.jpg" />
+  <main class="relative">
+    <section class="text-white tab-content">
+      {
+        earths.map((earth) => {
+          const { slug, data, body } = earth;
+          const { title, index, img, distance, time } = data;
+
+          return (
+            <article
+              id={title}
+              data-tab-content
+              class="text-center mt-8 active"
+            >
+              <h4 class="text-center text-base font-normal tracking-wider font-[barlow-condensed]">
+                <span class="opacity-20 mx-2">{index}</span>PICK YOUR
+                DESTINATION
+              </h4>
+              <img
+                class="w-36 mx-auto my-4 mb-8"
+                src={`/public/destination/${img}`}
+              />
+              <nav class="text-sm flex gap-4 list-none justify-center text-BLUE-300 font-[Barlow-Condensed]  font-normal  tracking-widest">
+                <li
+                  data-tab-target="#MOON"
+                  class={`tab ${index === 0 ? "active" : ""} text-white group relative w-max`}
+                >
+                  MOON
+                  <span class="absolute -bottom-3 left-0 w-0 transition-all h-1 bg-gray-700 group-hover:w-full duration-[10ms]" />
+                </li>
+                <li
+                  data-tab-target="#MARS"
+                  class={`tab ${index === 0 ? "active" : ""} text-white group relative w-max`}
+                >
+                  MARS
+                  <span class="absolute -bottom-3 left-0 w-0 transition-all h-1 bg-gray-700 group-hover:w-full duration-[10ms]" />
+                </li>
+                <li
+                  data-tab-target="#EUROPA"
+                  class={`tab ${index === 0 ? "active" : ""} text-white group relative w-max`}
+                >
+                  EUROPA
+                  <span class="absolute -bottom-3 left-0 w-0 transition-all h-1 bg-gray-700 group-hover:w-full duration-[10ms]" />
+                </li>
+                <li
+                  data-tab-target="#TITAN"
+                  class={`tab ${index === 0 ? "active" : ""} text-white group relative w-max`}
+                >
+                  TITAN
+                  <span class="absolute -bottom-3 left-0 w-0 transition-all h-1 bg-gray-700 group-hover:w-full duration-[10ms]" />
+                </li>
+              </nav>
+              <article class="text-center mt-8">
+                <h2 class="text-center text-white text-[56px] font-normal font-['Bellefair']">
+                  {title}
+                </h2>
+                <p class="text-center text-[#d0d6f9] text-[15px] font-normal font-['Barlow'] leading-[27px]">
+                  {body}
+                </p>
+                <div class="w-[90%] h-px opacity-25 bg-white mx-auto my-5" />
+                <h4 class="text-BLUE-300 my-2 text-center text-xs font-normal font-['Barlow Condensed'] uppercase tracking-widest">
+                  AVG. DISTANCE
+                </h4>
+                <p class="text-center text-2xl text-white text-[28px] font-normal font-['Bellefair'] uppercase">
+                  {distance}
+                </p>
+
+                <h4 class="text-BLUE-300 mt-6 mb-2 text-center text-xs font-normal font-['Barlow Condensed'] uppercase tracking-widest">
+                  EST. TRAVEL TIME
+                </h4>
+                <p class="text-center text-2xl text-white text-[28px] font-normal font-['Bellefair'] uppercase">
+                  {time}
+                </p>
+              </article>
+            </article>
+          );
+        })
+      }
+    </section>
+  </main>
+</Layout>
+
+<style>
+  [data-tab-content] {
+    display: none;
+  }
+
+  .active[data-tab-content] {
+    display: block;
+  }
+
+  body {
+    padding: 0;
+    margin: 0;
+  }
+
+  .tabs {
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid black;
+  }
+
+  .tab {
+    cursor: pointer;
+    padding: 10px;
+  }
+
+  .tab.active {
+    background-color: #ccc;
+  }
+
+  .tab:hover {
+    background-color: #aaa;
+  }
+
+  .tab-content {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+</style>
+
+<script>
+  const tabs = document.querySelectorAll("[data-tab-target]");
+  const tabContents = document.querySelectorAll("[data-tab-content]");
+
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      const target = document.querySelector(tab.dataset.tabTarget);
+      tabContents.forEach((tabContent) => {
+        tabContent.classList.remove("active");
+      });
+      tabs.forEach((tab) => {
+        tab.classList.remove("active");
+      });
+      tab.classList.add("active");
+      target.classList.add("active");
+    });
+  });
+</script>

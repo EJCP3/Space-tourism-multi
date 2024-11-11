@@ -1,0 +1,131 @@
+---
+import { getCollection } from "astro:content";
+
+const crews = await getCollection("crew")
+
+import "@fontsource/bellefair";
+import "@fontsource/barlow-condensed/100.css";
+import "@fontsource/barlow-condensed/400.css";
+---
+
+<section class="tab-content">
+    {
+        crews.map((crew, index) => {
+
+            const {slug, body, data} = crew
+            const { title, img, rol, name  } = data;
+
+
+            return(
+            <article  id={title}
+              data-tab-content
+              class="text-center mt-8 active" >
+            <h4
+        class="text-center text-base font-normal tracking-wider font-[bellefair] text-white"
+      >
+        <span class="opacity-20 mx-2">02</span>MEET YOUR CREW
+      </h4 >
+      
+      <h4
+        class="text-BLUE-300 mt-6  opacity-50 text-center  text-lg font-normal font-['Bellefair'] uppercase"
+      >
+        {rol}
+      </h4>
+      <p
+        class="text-center text-xl text-white text-[28px] font-normal font-['Bellefair'] uppercase mb-4"
+      >
+       {name}
+      </p>
+
+      <p
+        class="text-center text-[#d0d6f9] text-[17px] font-thin font-['bellefair'] leading-[20px] px-10 mb-4"
+      >
+       {body}
+      </p>
+    
+    <nav
+      class="text-sm flex gap-4 list-none justify-center text-BLUE-300 font-[Barlow-Condensed] font-normal tracking-widest my-10 tabs"
+    >
+      <li  class={`tab active bg-gray-500 group relative rounded-full w-2.5 h-2.5`} data-tab-target="#Douglas" >
+       
+      </li>
+   <li class={`tab  bg-gray-500 group relative rounded-full w-2.5 h-2.5`}  data-tab-target="#MARK" >
+        
+      </li>
+      <li class="tab  bg-gray-500 group relative rounded-full w-2.5 h-2.5"  data-tab-target="#Victor">
+        
+      </li>
+      <li class={`tab  bg-gray-500 group relative rounded-full w-2.5 h-2.5`}  data-tab-target="#Anousheh" >
+        
+      </li>
+   
+    </nav>
+    <img
+      class="w-[200px] mx-auto my-4 mb-2"
+      src={`/public/crew/${img}`}
+    />
+    </article>
+            );
+        })
+    }
+</section>
+
+
+<style>
+    [data-tab-content] {
+      display: none;
+    }
+  
+    .active[data-tab-content] {
+      display: block;
+    }
+  
+    body {
+      padding: 0;
+      margin: 0;
+    }
+  
+    .tabs {
+     
+   
+    }
+  
+    .tab {
+      cursor: pointer;
+      padding: 10px;
+    }
+  
+    .tab.active {
+      background-color: white;
+    }
+  
+    .tab:hover {
+      background-color: #aaa;
+    }
+  
+    .tab-content {
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+  </style>
+  
+  <script>
+   const tabs = document.querySelectorAll('[data-tab-target]')
+const tabContents = document.querySelectorAll('[data-tab-content]')
+
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    console.log("se")
+    const target = document.querySelector(tab.dataset.tabTarget)
+    tabContents.forEach(tabContent => {
+      tabContent.classList.remove('active')
+    })
+    tabs.forEach(tab => {
+      tab.classList.remove('active')
+    })
+
+    tab.classList.add('active')
+    target.classList.add('active')
+  })
+})
+  </script>

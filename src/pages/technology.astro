@@ -1,0 +1,21 @@
+---
+
+import Menu from "../components/Menu.astro";
+import Layout from "../layouts/Layout.astro";
+import Background from "../components/background.astro";
+import Tecnology from "../components/tabsTechnology.astro"
+
+import '@fontsource/bellefair';
+import '@fontsource/barlow-condensed/100.css';
+import '@fontsource/barlow-condensed/400.css';
+
+
+---
+
+<Layout title="technology">
+    <Menu/>
+    <Background src="public/technology/background-technology-mobile.jpg"/>
+    <main class="relative">
+        <Tecnology/>
+    </main>
+</Layout>

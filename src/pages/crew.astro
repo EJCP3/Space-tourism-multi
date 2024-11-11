@@ -1,0 +1,64 @@
+---
+import Menu from "../components/Menu.astro";
+import Layout from "../layouts/Layout.astro";
+import Background from "../components/background.astro";
+import TabsCrew from "../components/tabsCrew.astro";
+import "@fontsource/bellefair";
+import "@fontsource/barlow-condensed/100.css";
+import "@fontsource/barlow-condensed/400.css";
+---
+
+<Layout title="Crew">
+  <Menu />
+  <Background src="crew/background-crew-mobile.jpg" />
+  <main class="relative">
+    <TabsCrew/>
+    <!-- <section class="">
+      <h4
+        class="text-center text-base font-normal tracking-wider font-[bellefair] text-white"
+      >
+        <span class="opacity-20 mx-2">02</span>MEET YOUR CREW
+      </h4>
+      <article class="text-center mt-8"></article>
+      <h4
+        class="text-BLUE-300 mt-6  opacity-50 text-center  text-lg font-normal font-['Bellefair'] uppercase"
+      >
+        Commander
+      </h4>
+      <p
+        class="text-center text-xl text-white text-[28px] font-normal font-['Bellefair'] uppercase mb-4"
+      >
+        Douglas Hurley
+      </p>
+
+      <p
+        class="text-center text-[#d0d6f9] text-[17px] font-thin font-['bellefair'] leading-[20px] px-10 mb-4"
+      >
+        Douglas Gerald Hurley is an American engineer, former Marine Corps pilot
+        and former NASA astronaut. He launched into space for the third time as
+        commander of Crew Dragon Demo-2.
+      </p>
+    </section>
+    <nav
+      class="text-sm flex gap-4 list-none justify-center text-BLUE-300 font-[Barlow-Condensed] font-normal tracking-widest my-10"
+    >
+      <li class="w-2.5 h-2.5 bg-white rounded-full " >
+        
+      </li>
+   <li class="w-2.5 h-2.5 bg-white rounded-full opacity-20 " >
+        
+      </li>
+      <li class="w-2.5 h-2.5 bg-white rounded-full opacity-20" >
+        
+      </li>
+      <li class="w-2.5 h-2.5 bg-white rounded-full opacity-20" >
+        
+      </li>
+   
+    </nav>
+    <img
+      class="w-[240px] mx-auto my-4 mb-8"
+      src="public/crew/image-douglas-hurley.png"
+    /> -->
+  </main>
+</Layout>
